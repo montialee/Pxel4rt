@@ -1,0 +1,61 @@
+body{
+    margin: 0px;
+    overflow: hidden;
+}
+.pater{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00c6cf;
+    padding: 0px;
+    margin: 0px;
+    height: 100vh;
+    width: auto;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(16, 40px);
+    grid-template-rows: repeat(16, 40px);
+    box-sizing: border-box;
+    grid-gap: 1px;
+    margin-right: 25px;
+}
+
+.grid{
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 0 1px black;
+}
+
+.color{
+    width: 3vw;
+    height: 5vh;
+    margin: 10px;
+}
+.color:hover{
+    border: 3px solid brown;
+}
+#black{
+    background-color: black;
+}
+#white{
+    background-color: white;
+}
+#red{
+    background-color: red;
+}
+#blue{
+    background-color: blue;
+}
+#green{
+    background-color: green;
+}
+#yellow{
+    background-color: yellow;
+}
+
+.title{
+    text-align: center;
+    font-size: 25px;
+    color: brown;
+}
