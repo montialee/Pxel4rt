@@ -16,8 +16,8 @@ body{
 
 #container{
     display: grid;
-    grid-template-columns: repeat(16, 30px);
-    grid-template-rows: repeat(16, 30px);
+    grid-template-columns: repeat(16, 20px);
+    grid-template-rows: repeat(16, 20px);
     box-sizing: border-box;
     grid-gap: 1px;
     margin-bottom: 25px;
