@@ -80,4 +80,8 @@ body{
         width: 3vw;
         height: 5vh;
     }
+    .grid{
+            width: 20px;
+            height: 20px;
+        }    
 }
