@@ -11,6 +11,7 @@ body{
     margin: 0px;
     height: 100vh;
     width: auto;
+    flex-direction: column;
 }
 
 #container{
@@ -19,7 +20,7 @@ body{
     grid-template-rows: repeat(16, 40px);
     box-sizing: border-box;
     grid-gap: 1px;
-    margin-right: 25px;
+    margin-bottom: 25px;
 }
 
 .grid{
@@ -27,9 +28,15 @@ body{
     box-shadow: 0 0 0 1px black;
 }
 
+.colors{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .color{
-    width: 3vw;
-    height: 5vh;
+    width: 40px;
+    height: 40px;
     margin: 10px;
 }
 .color:hover{
@@ -58,4 +65,19 @@ body{
     text-align: center;
     font-size: 25px;
     color: brown;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 600px) {
+    .pater{
+        flex-direction: row;
+    }
+    #container{
+        margin-right: 25px;
+        margin-bottom: 0;
+    }
+    .color{
+        width: 3vw;
+        height: 5vh;
+    }
 }
