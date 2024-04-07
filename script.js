@@ -54,7 +54,7 @@ window.onload = function() {
 function saveDrawing() {
     html2canvas(document.getElementById('container')).then(function(canvas) {
         var link = document.createElement('a');
-        link.download = 'drawing.png';
+        link.download = 'disegninobbello0.png';
         link.href = canvas.toDataURL();
         link.click();
     });
