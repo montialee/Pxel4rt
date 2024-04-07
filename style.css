@@ -1,83 +1,38 @@
-body{
-    margin: 0px;
-    overflow: hidden;
-}
-.pater{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #00c6cf;
-    padding: 0px;
-    margin: 0px;
-    height: 100vh;
-    width: auto;
-    flex-direction: column;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="title">Disegnini Molto Belli</div>
+    <div class="pater">
+        <div id="container"></div>
+        <div class="colors">
+            <select onChange="changePalette(this.value)">
+                <option value="palette1">PALETTE 1  </option>
+                <option value="palette2">PALETTE 2  </option>
+                <option value="palette3">PALETTE 3  </option>
+            </select>
+            <div class="color" id="black" onClick="l_click(this.id)"></div>
+            <div class="color" id="white" onClick='l_click(this.id)'></div>
+            <div class="color" id="red" onClick='l_click(this.id)'></div>
+            <div class="color" id="blue" onClick='l_click(this.id)'></div>
+            <div class="color" id="green" onClick='l_click(this.id)'></div>
+        </div>
+<div style="display: flex; justify-content: space-between;">
+    <button id="erase" onClick="eraseAll()">CANCELLA TUTTO</button>
+    <button id="save" onClick="saveDrawing()">SALVA</button>
+</div>
 
-#container{
-    display: grid;
-    grid-template-columns: repeat(16, 20px);
-    grid-template-rows: repeat(16, 20px);
-    box-sizing: border-box;
-    grid-gap: 1px;
-    margin-bottom: 25px;
-}
+        
 
-.grid{
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 0 0 1px black;
-}
-
-.colors{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.color{
-    width: 40px;
-    height: 40px;
-    margin: 10px;
-}
-.color:hover{
-    border: 3px solid brown;
-}
-#black{
-    background-color: black;
-}
-#white{
-    background-color: white;
-}
-#red{
-    background-color: red;
-}
-#blue{
-    background-color: blue;
-}
-#green{
-    background-color: green;
-}
-#yellow{
-    background-color: yellow;
-}
-
-.title{
-    text-align: center;
-    font-size: 25px;
-    color: brown;
-    margin-bottom: 20px;
-}
-
-@media (min-width: 600px) {
-    .pater{
-        flex-direction: row;
-    }
-    #container{
-        margin-right: 25px;
-        margin-bottom: 0;
-    }
-    .color{
-        width: 3vw;
-        height: 5vh;
-    }  
-}
+        
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
