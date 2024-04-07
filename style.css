@@ -1,38 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-</head>
-<body>
-    <div class="title">Disegnini Molto Belli</div>
-    <div class="pater">
-        <div id="container"></div>
-        <div class="colors">
-            <select onChange="changePalette(this.value)">
-                <option value="palette1">PALETTE 1  </option>
-                <option value="palette2">PALETTE 2  </option>
-                <option value="palette3">PALETTE 3  </option>
-            </select>
-            <div class="color" id="black" onClick="l_click(this.id)"></div>
-            <div class="color" id="white" onClick='l_click(this.id)'></div>
-            <div class="color" id="red" onClick='l_click(this.id)'></div>
-            <div class="color" id="blue" onClick='l_click(this.id)'></div>
-            <div class="color" id="green" onClick='l_click(this.id)'></div>
-        </div>
-<div style="display: flex; justify-content: space-between;">
-    <button id="erase" onClick="eraseAll()">CANCELLA TUTTO</button>
-    <button id="save" onClick="saveDrawing()">SALVA</button>
-</div>
+body{
+    margin: 0px;
+    overflow: hidden;
+    background-color: #a29eb6;
+}
+.pater{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #BDAEBE;
+    padding: 0px;
+    margin: 0px;
+    height: 100vh;
+    width: auto;
+    flex-direction: column;
+}
 
-        
+#container{
+    display: grid;
+    grid-template-columns: repeat(16, 30px);
+    grid-template-rows: repeat(16, 30px);
+    box-sizing: border-box;
+    grid-gap: 1px;
+    margin-bottom: 25px;
+}
 
-        
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
+.grid{
+    background-color: rgb(255, 255, 255);
+}
+
+.colors{
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.color{
+    width: 100px;
+    height: 40px;
+    margin: 5px;
+    margin-left: 10px;
+    box-shadow: 0 0 0 1px black;
+}
+
+.color:hover{
+    border: 3px solid brown;
+}
+
+
+@font-face {
+    font-family: 'pixel';
+    src: url('pixellari/Pixellari.ttf') format('truetype'),
+}
+
+.title{
+    font-family: 'pixel', fallback, sans-serif;
+    text-align: center;
+    font-size: 40px;
+    color: #00449d;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+button {
+    width: 100px; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
+    background-color: #1a1a1a; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+select {
+    margin: 10px;
+    width: 100px;
+    height: 35px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 10px;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    appearance: none; /* This removes the default browser styling */
+    -webkit-appearance: none; /* This is for Safari */
+    -moz-appearance: none; /* This is for Firefox */
+}
+
+/* This is for the arrow in the drop-down menu */
+select::-ms-expand {
+    display: none;
+}
+select::after {
+    content: "\25BC";
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px;
+    background-color: #1a1a1a;
+    pointer-events: none;
+}
+
+
