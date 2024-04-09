@@ -1,7 +1,7 @@
 
 const squares = document.querySelectorAll('.color-square');
 let selectedColor = 'black';
-let memorycolor;
+let memorycolor = 'black';
 let pensileSize;
 let squareCounter = 0; // Initialize the counter
 const maxSquares = 15; // Set the maximum number of square
