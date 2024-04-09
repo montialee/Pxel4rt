@@ -1,107 +1,134 @@
 body{
-    margin: 0px;
-    overflow: hidden;
-    background-color: #a29eb6;
+    background-color: white;
+    color: white;
 }
-.pater{
+
+span{
+    font-size: large;
+    padding: 5px;
+}
+
+#grid{
+    position: absolute;
+    pointer-events: none;
+    border: 3px solid black;
+}
+#slider{
+    width: 75px;
+}
+
+.title {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: #43655a;
+    text-align: center;
+
+    font-size: xx-large;
+    font-family: fantasy;
+    color: white;
+  }
+
+
+#container{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #BDAEBE;
-    padding: 0px;
-    margin: 0px;
     height: 100vh;
-    width: auto;
-    flex-direction: column;
+    margin-left: 200px;
+    margin-right: 200px;
 }
 
-#container{
-    display: grid;
-    grid-template-columns: repeat(16, 30px);
-    grid-template-rows: repeat(16, 30px);
-    box-sizing: border-box;
-    grid-gap: 1px;
-    margin-bottom: 25px;
-}
-
-.grid{
-    background-color: rgb(255, 255, 255);
-}
-
-.colors{
-    position: absolute;
+.sidebar {
+    position: fixed;
+    top: 0;
     left: 0;
+    height: 100vh;
+    width: 90px; /* Adjust width as needed */
+    background-color: #43655a;
+    padding-top: 80px;
     display: flex;
     flex-direction: column;
-}
+    flex-wrap: wrap;
+  }
 
-.color{
-    width: 100px;
-    height: 40px;
-    margin: 5px;
-    margin-left: 10px;
-    box-shadow: 0 0 0 1px black;
-}
-
-.color:hover{
-    border: 3px solid brown;
-}
-
-
-@font-face {
-    font-family: 'pixel';
-    src: url('pixellari/Pixellari.ttf') format('truetype'),
-}
-
-.title{
-    font-family: 'pixel', fallback, sans-serif;
-    text-align: center;
-    font-size: 40px;
-    color: #00449d;
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
-
-button {
-    width: 100px; /* Adjust as needed */
-    height: 50px; /* Adjust as needed */
-    background-color: #1a1a1a; /* Green */
-    border: none;
-    color: white;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-
-select {
-    margin: 10px;
-    width: 100px;
-    height: 35px;
-    background-color: #1a1a1a;
-    color: #ffffff;
-    padding: 10px;
-    font-size: 12px;
-    border: none;
-    border-radius: 5px;
-    appearance: none; /* This removes the default browser styling */
-    -webkit-appearance: none; /* This is for Safari */
-    -moz-appearance: none; /* This is for Firefox */
-}
-
-/* This is for the arrow in the drop-down menu */
-select::-ms-expand {
-    display: none;
-}
-select::after {
-    content: "\25BC";
-    position: absolute;
+  .sidebarR {
+    position: fixed;
     top: 0;
     right: 0;
-    padding: 15px;
-    background-color: #1a1a1a;
-    pointer-events: none;
+    height: 100vh;
+    width: 95px; /* Adjust width as needed */
+    background-color: #43655a;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .sidebarR button{
+    font-size: medium;
+  }
+
+  .color-square {
+    width: 25px;
+    height: 25px;
+    margin: 2px;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+  #add-square-button {
+    background-color: #1c1f1c;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    font-size: larger;
+  }
+  
+  #square-color-input {
+    margin-top: 10px;
+  }
+  
+  .color1 {background-color: #ed6a5a;}
+  .color2 {background-color: #f4f1bb;}
+  .color3 {background-color: #9bc1bc;}
+
+
+.sidebarR button{
+    background-color: #1c1f1c;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    font-size: larger;
+    border-radius: 5px;
+    margin: 5px;
 }
 
+.sidebarR button:active{
+    background-color: #ff4040;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 0;
+  outline: none;
+}
+
+#bottom-square {
+  width: 90px;
+  height: 90px;
+  background-color: black;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
