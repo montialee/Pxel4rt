@@ -1,58 +1,124 @@
 
-for (let i = 0; i < 256; i++) {
-    document.getElementById("container").innerHTML +="<div class='grid' id="+i+" onClick='r_click(this.id)'></div>"
-}
-var color = 'black'
-function l_click(clicked_id){
-    color = clicked_id
-    return color
-}
-function r_click(clicked_id){
-    document.getElementById(clicked_id).style.backgroundColor = color;
-}
-    
-// Define your color palettes
-var palettes = {
-    palette1: {black: '#264653', white: '#2A9D8F', red: '#E9C46A', blue: '#F4A261', green: '#E76F51', },
-    palette2: {black: '#011627', white: '#fdfffc', red: '#2ec4b6', blue: '#e71d36', green: '#ff9f1c', },
-    palette3: {black: '#e63946', white: '#f1faee', red: '#a8dadc', blue: '#457b9d', green: '#1d3557', },
-    // Add more palettes as needed
-};
+const squares = document.querySelectorAll('.color-square');
+let selectedColor = 'black';
+let memorycolor;
+let pensileSize;
+let squareCounter = 0; // Initialize the counter
+const maxSquares = 15; // Set the maximum number of square
 
-// Set the initial palette
-var currentPalette = 'palette1';
+squares.forEach(square => {
+  square.addEventListener('click', () => {
+    selectedColor = window.getComputedStyle(square).backgroundColor;
+    memorycolor = selectedColor;
+    document.getElementById("bottom-square").style.backgroundColor = selectedColor;
+  });
+});
 
-// Function to change the palette
-function changePalette(paletteName) {
-    currentPalette = paletteName;
-    var colors = document.getElementsByClassName('color');
-    for (var i = 0; i < colors.length; i++) {
-        var colorId = colors[i].id;
-        colors[i].style.backgroundColor = palettes[currentPalette][colorId];
+// Add an event listener to the square-color-input input field
+document.getElementById("square-color-input").addEventListener("input", function() {
+    // Get the value of the selected color
+    selectedColor = document.getElementById("square-color-input").value;
+    memorycolor = document.getElementById("square-color-input").value;
+    // Set the background color of the bottom-square div to the selected color
+    document.getElementById("bottom-square").style.backgroundColor = selectedColor;
+  });
+  
+
+const canvas = document.getElementById('canvas');
+const grid = document.getElementById('grid');
+const ctx = canvas.getContext('2d');
+const ctxz = grid.getContext('2d');
+let size = 32;
+pensileSize = 1;
+
+// Draw grid
+for (let x = 0; x <= grid.width; x += size) {
+  ctxz.moveTo(x, 0);
+  ctxz.lineTo(x, grid.height);
+}
+
+for (let y = 0; y <= grid.height; y += size) {
+  ctxz.moveTo(0, y);
+  ctxz.lineTo(grid.width, y);
+}
+
+ctxz.strokeStyle = "#ddd";
+ctxz.stroke();
+
+canvas.addEventListener('click', function(e) {
+  let x = Math.floor(e.offsetX / size) * size;
+  let y = Math.floor(e.offsetY / size) * size;
+  ctx.fillStyle = selectedColor;
+  ctx.fillRect(x, y, size, size);
+    if (pensileSize==2){
+        ctx.fillRect(x+size, y, size, size);
+        ctx.fillRect(x, y+size, size, size);
+        ctx.fillRect(x, y-size, size, size);
+        ctx.fillRect(x-size, y, size, size);
     }
+});
+
+const addSquareButton = document.getElementById('add-square-button');
+const squareColorInput = document.getElementById('square-color-input');
+const container = document.getElementById('sidebar');
+
+addSquareButton.addEventListener('click', () => {
+  if (squareCounter < maxSquares) { // Check if the limit is not reached
+    const color = squareColorInput.value;
+    const square = createSquare(color, 'color-square');
+    square.addEventListener('click', () => {
+      selectedColor = window.getComputedStyle(square).backgroundColor;
+      document.getElementById("bottom-square").style.backgroundColor = selectedColor;
+    });
+    container.appendChild(square);
+    squareCounter++; // Increment the counter
+    selectedColor = color;
+    document.getElementById("bottom-square").style.backgroundColor = selectedColor;
+  } else {
+    alert('numero massimo di colori raggiunto!');
+  }
+});
+
+function createSquare(color, className) {
+  const square = document.createElement('div');
+  square.style.width = '25px';
+  square.style.height = '25px';
+  square.style.backgroundColor = color;
+  square.style.margin = '2px';
+  square.style.border = '1px solid black';
+  square.style.borderRadius = '5px';
+  square.classList.add(className);
+  return square;
 }
 
-// Update your l_click and r_click functions
-function l_click(clicked_id){
-    color = palettes[currentPalette][clicked_id];
-    return color;
-}
-function r_click(clicked_id){
-    document.getElementById(clicked_id).style.backgroundColor = color;
+function gomma(){
+    selectedColor = 'white';
+    return selectedColor;
 }
 
-function eraseAll() {
-    var cells = document.getElementsByClassName('grid');
-    for (var i = 0; i < cells.length; i++) {
-        cells[i].style.backgroundColor = 'white';
+function matita(){
+    selectedColor = memorycolor;
+    return selectedColor;
+}
+
+function cancella(){
+    ctx.fillStyle = "white";
+
+    // Get the canvas width and height
+    var canvasWidth = canvas.width;
+    var canvasHeight = canvas.height;
+
+    // Color all the squares of the canvas white
+    for (var x = 0; x < canvasWidth; x += 16) {
+        for (var y = 0; y < canvasHeight; y += 16) {
+        ctx.fillRect(x, y, 16, 16);
+        }
     }
+    ctx.fillStyle = selectedColor;
 }
 
-window.onload = function() {
-    changePalette('palette1'); // Replace 'palette1' with your default palette
-};
 function saveDrawing() {
-    html2canvas(document.getElementById('container')).then(function(canvas) {
+    html2canvas(document.getElementById('canvas')).then(function(canvas) {
         var link = document.createElement('a');
         link.download = 'disegninobbello0.png';
         link.href = canvas.toDataURL();
@@ -60,3 +126,21 @@ function saveDrawing() {
     });
 }
 
+// Get the slider element
+var slider = document.getElementById("slider");
+
+// Get the slider value display element
+var sliderValue = document.getElementById("slider-value");
+
+// Variable to store the slider value
+var sliderVariable = 1;
+
+// Add an input event listener to the slider
+slider.addEventListener("input", function() {
+  // Update the slider value display
+  sliderValue.textContent = slider.value;
+
+  // Update the slider variable in real-time
+  sliderVariable = parseFloat(slider.value);
+  pensileSize = sliderVariable
+});
