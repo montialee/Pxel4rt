@@ -17,6 +17,10 @@ span{
     width: 75px;
 }
 
+#centro{
+    font-size: x-small;
+}
+
 .title {
     position: fixed;
     top: 0;
