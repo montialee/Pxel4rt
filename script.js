@@ -28,7 +28,7 @@ const canvas = document.getElementById('canvas');
 const grid = document.getElementById('grid');
 const ctx = canvas.getContext('2d');
 const ctxz = grid.getContext('2d');
-let size = 33;
+let size = 32;
 pensileSize = 1;
 
 // Draw grid
