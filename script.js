@@ -109,9 +109,9 @@ function cancella(){
     var canvasHeight = canvas.height;
 
     // Color all the squares of the canvas white
-    for (var x = 0; x < canvasWidth; x += 16) {
-        for (var y = 0; y < canvasHeight; y += 16) {
-        ctx.fillRect(x, y, 16, 16);
+    for (var x = 0; x < canvasWidth; x += 16.5) {
+        for (var y = 0; y < canvasHeight; y += 16.5) {
+        ctx.fillRect(x, y, 16.5, 16.5);
         }
     }
     ctx.fillStyle = selectedColor;
