@@ -1,37 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>DMB II</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disegnini Molto Belli II</title>
+    <link rel="stylesheet" href="css.css">
 </head>
 <body>
     <div class="title">Disegnini Molto Belli II</div>
-    <div class="sidebar" id="sidebar">
-        <button id="add-square-button">Salva Colore</button>
-        <input type="color" id="square-color-input" class="style1">
-        <div class="color-square color1" ></div>
-        <div class="color-square color2" ></div>
-        <div class="color-square color3" ></div>
+
+    <div class="sidebar">
+        <span>Salva Colore</span>
+        <div class="color-square color1"></div>
+        <div class="color-square color2"></div>
+        <div class="color-square color3"></div>
+        <input type="color" id="square-color-input">
+        <button id="add-square-button">+</button>
         <div id="bottom-square"></div>
     </div>
-    <div class="sidebarR">
-        <span>dimensioni matita: </span>
-        <input type="range" id="slider" min="1" max="2" step="1" value="1">
-        <span id="slider-value">1</span>
-        <button type="button" onclick="gomma()">gomma</button>
-        <button type="button" onclick="matita()">matita</button>
-        <button id="centro" type="button" onclick="matita()">mi dispiace :( ecco quì il quadratino del centro</button>
-        <button type="button" onclick="cancella()">cancella tutto</button>
-        <button type="button" onclick="saveDrawing()">salva</button>
-    </div>
-    <div id="container">
-        <canvas id="grid" width="512" height="512"></canvas>
-        <canvas id="canvas" width="512" height="512"></canvas>
-    </div>
-    
-    
 
-<script src="script.js"></script>
+    <div class="sidebarR">
+        <span>dimensioni matita: <span id="slider-value">1</span></span>
+        <input type="range" id="slider" min="1" max="2" value="1" step="1">
+        <button onclick="gomma()">gomma</button>
+        <button onclick="matita()">matita</button>
+        <button id="centro">mi dispiace :( ecco quì il quadratino del centro</button>
+        <button onclick="cancella()">cancella tutto</button>
+        <button onclick="saveDrawing()">salva</button>
+    </div>
+
+    <div id="container">
+        <div id="grid-container">
+            <canvas id="grid"></canvas>
+            <canvas id="canvas"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="javascript.js"></script>
 </body>
 </html>
